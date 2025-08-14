@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SWAY KING LOTTERY</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <span class="logo">🎯</span>
+      <h1>SWAY KING LOTTERY</h1>
+    </div>
+    <div id="headerUser" class="header-user hidden">
+      <span id="greeting">Hi, Guest</span>
+      <span class="badge" id="ticketBadge">0 ZP</span>
+      <button class="btn ghost" id="logoutBtn">Logout</button>
+    </div>
+  </header>
+
+  <!-- AUTH VIEW -->
+  <main id="authView" class="container">
+    <div class="card auth-card">
+      <h2>Ingia au Jisajili</h2>
+      <div class="tabs">
+        <button class="tab active" data-tab="loginForm">Login</button>
+        <button class="tab" data-tab="signupForm">Sign Up</button>
+      </div>
+      <form id="loginForm" class="form visible">
+        <label>Email</label>
+        <input type="email" id="loginEmail" placeholder="email@example.com" required />
+        <label>Password</label>
+        <input type="password" id="loginPassword" placeholder="••••••••" required />
+        <button type="submit" class="btn primary full">Ingia</button>
+      </form>
+      <form id="signupForm" class="form">
+        <label>Jina</label>
+        <input type="text" id="signupName" placeholder="Jina Kamili" required />
+        <label>Email</label>
+        <input type="email" id="signupEmail" placeholder="email@example.com" required />
+        <label>Password</label>
+        <input type="password" id="signupPassword" placeholder="Angalau herufi 6" required />
+        <button type="submit" class="btn primary full">Jisajili</button>
+      </form>
+      <div class="hint">Akaunti za majaribio: user@sway.com / Passw0rd! &nbsp; | &nbsp; admin@sway.com / Admin123!</div>
+    </div>
+  </main>
+
+  <!-- DASHBOARD VIEW -->
+  <main id="dashboardView" class="container hidden">
+    <div class="grid">
+      <section class="card">
+        <h3>Salio la Tiketi (ZP)</h3>
+        <div class="big-number" id="ticketBalance">0</div>
+        <div class="row gap">
+          <button id="spinBtn" class="btn accent">Spin 🎰</button>
+          <button id="openBuy" class="btn primary">Buy Tickets</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3>Matokeo ya Hivi Karibuni</h3>
+        <ul id="recentResults" class="list empty">
+          <li>Hakuna rekodi bado.</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h3>Malipo Yangu</h3>
+        <ul id="recentPayments" class="list empty">
+          <li>Hakuna malipo bado.</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <!-- BUY TICKETS MODAL -->
+  <div id="buyModal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Buy Tickets</h3>
+        <button class="btn ghost" id="closeBuy">✕</button>
+      </div>
+      <div class="modal-body">
+        <label>Idadi ya Tiketi</label>
+        <select id="buyAmount">
+          <option value="1">1</option>
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="50">50</option>
+        </select>
+        <label>Njia ya Malipo</label>
+        <select id="buyMethod">
+          <option value="mpesa">M-Pesa</option>
+          <option value="tigo">Tigo Pesa</option>
+          <option value="airtel">Airtel Money</option>
+        </select>
+        <label>Namba ya Simu</label>
+        <input id="buyPhone" placeholder="07xxxxxxxx" />
+        <div id="buyPrice" class="price">Bei: -</div>
+      </div>
+      <div class="modal-footer">
+        <button id="payBtn" class="btn primary full">Pay (Mock)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER NAV -->
+  <footer class="footer-nav">
+    <a id="footerSpin" class="footer-btn">Spin</a>
+    <a id="footerBuy" class="footer-btn">Buy Tickets</a>
+    <a class="footer-btn" href="https://wa.me/255774482914" target="_blank" rel="noopener">Contact Us</a>
+    <a class="footer-btn" href="admin.html">Admin</a>
+  </footer>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script>
+    // Toggle Supabase mode
+    window.USE_SUPABASE = false; // set true when using Supabase
+  </script>
+  <script src="app.js"></script>
+  <script src="supabase.js"></script>
+</body>
+</html>
